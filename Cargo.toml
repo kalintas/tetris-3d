@@ -7,8 +7,8 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-glfw = "0.41.0"
+glfw = "0.49.1"
 gl = "0.14.0"
-nalgebra-glm = "0.12.0"
-image = "0.23.14"
-rand = "0.8.3"
+nalgebra-glm = "0.17.0"
+image = "0.24.5"
+rand = "0.8.5"

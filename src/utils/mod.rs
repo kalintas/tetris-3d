@@ -1,8 +1,7 @@
-
 pub use gl::types::*;
 
-pub use std::mem;
 pub use std::ffi;
+pub use std::mem;
 
 pub use gl::types;
 
@@ -10,39 +9,31 @@ pub type VoidPtr = *const ffi::c_void;
 pub type IdType = GLuint;
 pub type Uniform = GLint;
 
-pub fn clear_gl_errors()
-{
+pub fn clear_gl_errors() {
     while unsafe { gl::GetError() } != gl::NO_ERROR {}
 }
 
-pub fn check_gl_errors()
-{
-    loop
-    {
-        match unsafe { gl::GetError() }
-        {
+pub fn check_gl_errors() {
+    loop {
+        match unsafe { gl::GetError() } {
             gl::NO_ERROR => break,
-            error => 
-            { 
+            error => {
                 println!("[OpenGL Error]: {}", error);
                 panic!();
             }
         }
     }
-    
 }
 
-
-
 #[macro_export]
-macro_rules! gl_call 
-{
-    ($x: expr) => 
-    {        
+macro_rules! gl_call {
+    ($x: expr) => {
         crate::utils::clear_gl_errors();
 
-        unsafe { $x; }
-        
+        unsafe {
+            $x;
+        }
+
         crate::utils::check_gl_errors();
     };
 }
@@ -58,5 +49,3 @@ pub use vertex_array_object::VertexArrayObject;
 
 pub mod texture;
 pub use texture::Texture;
-
-
